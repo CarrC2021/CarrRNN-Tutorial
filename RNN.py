@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
 #Use whatever is your data path here.
-data_path = "~/RNN_tutorial/CarrRNN-Tutorial"
+data_path = ""
 
 print(keras.__version__)
 #This will build a dictionary where the keys are strings and the value is the corresponding integer
@@ -64,7 +64,7 @@ train_data, valid_data, test_data, vocabulary, reversed_dictionary = load_data()
 num_steps=30 
 batch_size=20 
 hidden_size=500
-num_epochs=10
+num_epochs=100
 #Do something to create batches
 class KerasBatchGenerator(object):
 
@@ -109,7 +109,7 @@ model.add(LSTM(hidden_size, return_sequences=True))
 #Don't know what this is meant to mean, if I am supposed to program a condition or if they put this here
 #literally asking the programmer if I was using dropout
 #if use_dropout:
-    #model.add(Dropout(0.5))
+#model.add(Dropout(0.5))
 model.add(TimeDistributed(Dense(vocabulary)))
 #model.add(Activation('softmax'))
 model.add(keras.layers.Activation(activations.softmax))
