@@ -5,6 +5,7 @@ from keras.preprocessing import sequence
 from keras.models import Sequential,Input,Model
 from keras.layers import Dense, Dropout, Embedding, LSTM, TimeDistributed
 from keras.utils import to_categorical
+from keras import activations
 from keras.layers.advanced_activations import LeakyReLU
 from keras.callbacks import ModelCheckpoint
 import matplotlib.pyplot as plt
