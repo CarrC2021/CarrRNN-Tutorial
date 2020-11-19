@@ -124,7 +124,7 @@ model.fit_generator(train_data_generator.generate(), len(train_data)//(batch_siz
 
 
 
-model = load_model(data_path + "\model-40.hdf5")
+model = load_model("\model-40.hdf5")
 dummy_iters = 40
 example_training_generator = KerasBatchGenerator(train_data, num_steps, 1, vocabulary,
                                                      skip_step=1)
