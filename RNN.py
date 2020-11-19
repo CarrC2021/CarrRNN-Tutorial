@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
 #Use whatever is your data path here.
-data_path = "/mnt/a/School/Senior Year/Machine Learning/Lab8"
+data_path = "~/RNN_tutorial/CarrRNN-Tutorial"
 
 print(keras.__version__)
 #This will build a dictionary where the keys are strings and the value is the corresponding integer
@@ -111,7 +111,8 @@ model.add(LSTM(hidden_size, return_sequences=True))
 #if use_dropout:
     #model.add(Dropout(0.5))
 model.add(TimeDistributed(Dense(vocabulary)))
-model.add(Activation('softmax'))
+#model.add(Activation('softmax'))
+model.add(keras.layers.Activation(activations.softmax))
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
 
