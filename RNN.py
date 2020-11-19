@@ -3,7 +3,7 @@ import keras
 import numpy as np
 from keras.preprocessing import sequence
 from keras.models import Sequential,Input,Model
-from keras.layers import Dense, Dropout, Embedding, LSTM
+from keras.layers import Dense, Dropout, Embedding, LSTM, TimeDistributed
 from keras.utils import to_categorical
 from keras.layers.advanced_activations import LeakyReLU
 from keras.callbacks import ModelCheckpoint
@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 #Use whatever is your data path here.
 data_path = "/mnt/a/School/Senior Year/Machine Learning/Lab8"
 
-
+print(keras.__version__)
 #This will build a dictionary where the keys are strings and the value is the corresponding integer
 def build_vocab(path):
     text_data = open("ptb.train.txt", 'r', encoding='utf-8').read()
@@ -105,10 +105,12 @@ model = Sequential()
 model.add(Embedding(vocabulary, hidden_size, input_length=num_steps))
 model.add(LSTM(hidden_size, return_sequences=True))
 model.add(LSTM(hidden_size, return_sequences=True))
-if use_dropout:
-    model.add(Dropout(0.5))
-model.add(TimeDistributed = Dense(vocabulary))
-model.add(activation = 'softmax')
+#Don't know what this is meant to mean, if I am supposed to program a condition or if they put this here
+#literally asking the programmer if I was using dropout
+#if use_dropout:
+    #model.add(Dropout(0.5))
+model.add(TimeDistributed(Dense(vocabulary)))
+model.add(Activation('softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
 
